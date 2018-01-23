@@ -1,5 +1,6 @@
 package com.texium.kinky;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -67,8 +68,12 @@ public class NavigationDrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_close_session:
+                openActivity(LoginActivity.class);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -97,5 +102,11 @@ public class NavigationDrawerActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openActivity(Class<?> cls) {
+        Intent mainActivity = new Intent(this.getApplicationContext(), cls);
+        startActivity(mainActivity);
+        finish();
     }
 }

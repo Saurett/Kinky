@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = LoginActivity.class.getSimpleName();
+    private final String TAG = this.getClass().getName();
 
     private Button btnLogin, btnReset, btnSignup;
 
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void openActivity(Class<?> cls) {
-        Intent mainActivity = new Intent(LoginActivity.this, cls);
+        Intent mainActivity = new Intent(this.getApplicationContext(), cls);
         startActivity(mainActivity);
         finish();
     }
